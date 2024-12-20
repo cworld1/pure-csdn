@@ -1,0 +1,298 @@
+/* ==UserStyle==
+@name               Pure CSDN
+@namespace          github.com/openstyles/stylus
+@version            1.0.0
+@description        CSDN purification and optimization of reading experience
+@description:zh-CN  CSDN 净化 & 优化阅读体验
+@author             CWorld
+==/UserStyle== */
+@-moz-document domain("blog.csdn.net") {
+    /* NAMESPACE: Blog */
+    :root {
+        --radius: 7px;
+    }
+
+    /* === Remove useless elements === */
+    /* Top app bar */
+    /* Left-side */
+    #csdn-toolbar li:where([title="高价值源码课程分享"], [title="系统学习·问答·比赛"], [title="找到志同道合的伙伴"] +li, [title="会议"], [title="开源代码托管"]),
+    /* Middle */
+    :where(#csdn-toolbar, #csdn_tool_otherPlace) .toolbar-search .toolbar-search-container .icon-fire,
+    #csdn-toolbar .toolbar-search .toolbar-search-half > div.toolbar-search-hot,
+    /* Right side */
+    #csdn-toolbar .toolbar-inside.exp3 .toolbar-btn-vip,
+    #csdn-toolbar .toolbar-inside.exp3 .toolbar-btn-mp .csdn-toolbar-creative-mp :where(.csdn-toolbar-creative-mp-bg, .csdn-toolbar-creative-mp-close),
+
+    /* Left sidebar */
+    .blog_container_aside,
+
+    /* Right sidebar */
+    .sidetool-writeguide-box,
+    #recommend-right :where(.programmer1Box, #recommendAdBox, #asideArchive, .aside-box.kind_person),
+    #csdn-toolbar .toolbar-inside.exp3 .toolbar-btn-write.toolbar-btn-write-new,
+    .icon-option-beta,
+    :where(#csdn-toolbar, #csdn_tool_otherPlace) .toolbar-btns .toolbar-btn-msg #toolbar-remind i,
+
+    /* Corner toolbar */
+    .passport-login-tip-container,
+    .csdn-side-toolbar a.option-box:where([data-type="guide"], [data-type="cs"], [data-type="app"]),
+    .btn-side-chatdoc-contentbox .side-chatdoc-desc-box,
+
+    /* Main context */
+    main div.blog-content-box .article-header-box .article-header div.article-info-box div.article-bar-top :where(#blog_detail_zk_collection, .read-count-box.is-like),
+    main div.blog-content-box article #treeSkill,
+    .recommend-nps-box,
+    #blogHuaweiyunAdvert,
+    .article-search-tip,
+    .recommend-box:where(.first-recommend-box, .second-recommend-box),
+    .comment-operate-box .comment-operate-item.comment-reward,
+    main div.blog-content-box pre .code-edithtml,
+
+    /* Bottom app bar */
+    .more-toolbox-new :where(.tool-item.tool-item-bar, .tool-QRcode),
+    .more-toolbox-new .tool-active.is-collection .tool-active-list {
+        display: none !important;
+    }
+
+    /* === Adjust elements === */
+    /* Top app bar */
+    #csdn-toolbar .toolbar-container,
+    #csdn_tool_otherPlace .toolbar-container {
+        min-width: inherit;
+    }
+    #csdn-toolbar .toolbar-inside.exp3 .toolbar-container-middle .toolbar-search {
+        max-width: 400px;
+    }
+    #csdn-toolbar .toolbar-inside.exp3 .toolbar-container-middle .toolbar-search .toolbar-search-container input::placeholder {
+        color: transparent;
+    }
+    #csdn-toolbar .toolbar-search .toolbar-search-half > div.toolbar-search-history {
+        width: inherit;
+    }
+
+    /* Main context */
+    body {
+        background: url("https://csdnimg.cn/release/blogv2/dist/pc/themesSkin/skin-city/images/bg.jpg?v20200831") repeat-x !important;
+        background-color: #f5f6f7 !important;
+        min-width: inherit;
+    }
+    .nodata .container {
+        display: flex;
+        justify-content: center;
+        width: inherit !important;
+    }
+    main {
+        float: inherit;
+    }
+    main div.blog-content-box {
+        border-radius: var(--radius) var(--radius) 0 0;
+    }
+    main div.blog-content-box pre.set-code-show,
+    main div.blog-content-box pre.set-code-hide {
+        border-radius: var(--radius);
+    }
+    main div.blog-content-box .article-header-box,
+    #blogColumnPayAdvert,
+    #blogHuaweiyunAdvert,
+    #csdn-copyright-footer.column {
+        background: transparent !important;
+    }
+    /* Article header box */
+    main div.blog-content-box .article-header-box .article-header div.article-info-box {
+        border-radius: var(--radius) var(--radius) 0 0;
+        display: flex;
+        padding: 5px 10px 2.5px;
+        flex-wrap: wrap;
+    }
+    main div.blog-content-box .article-header-box .article-header div.article-info-box div.article-bar-top {
+        align-items: center;
+    }
+    main div.blog-content-box .article-header-box .article-header div.article-info-box div.article-bar-top .article-type-img {
+        width: 27px;
+        height: 24px;
+    }
+    main div.blog-content-box .article-header-box .article-header div.article-info-box :where(div.article-bar-top,
+    div.blog-tags-box) {
+        width: auto !important;
+    }
+    main div.blog-content-box .article-header-box .article-header div.article-info-box div.blog-tags-box .tags-box {
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+    #blogColumnPayAdvert .column-group {
+        padding: 0;
+    }
+    #blogColumnPayAdvert .column-group-item {
+        border-radius: 0 0 var(--radius) var(--radius);
+        height: auto;
+    }
+    #blogColumnPayAdvert .column-group-item.column-group0 {
+        padding: 0 10px 5px 10px;
+    }
+    main div.blog-content-box .article-header-box .article-header div.article-info-box div.blog-tags-box {
+        padding-left: 20px;
+    }
+    main div.blog-content-box .article-header-box .article-header > div.article-info-box > div.blog-tags-box > .tags-box > :is(span.label:not(:last-of-type),
+    span.label:not(:last-of-type) + a) {
+        display: none;
+    }
+    #blogColumnPayAdvert .column-group-item .item-l {
+        width: auto;
+        flex-grow: 1;
+    }
+    #blogColumnPayAdvert .column-group-item .item-l img {
+        border-radius: 999px;
+        width: 26px;
+        height: 26px;
+        opacity: 0.6;
+    }
+    #blogColumnPayAdvert .column-group-item .item-l .title {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    #blogColumnPayAdvert .column-group-item .item-l .title .dec {
+        display: none;
+    }
+    #blogColumnPayAdvert .column-group-item .item-m {
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        min-width: auto;
+    }
+    #blogColumnPayAdvert .column-group-item .item-r {
+        padding: 0;
+    }
+    #blogColumnPayAdvert .column-group-item .item-r a {
+        height: 24px;
+        line-height: 22px;
+        width: 68px;
+    }
+    main div.blog-content-box .article-header-box .article-header div.article-info-box div.blog-tags-box .tags-box.artic-tag-box a.tag-link {
+        border-radius: var(--radius);
+    }
+    /* Code */
+    main div.blog-content-box pre .hljs-button.mddef {
+        top: 10px !important;
+        right: 10px !important;
+        margin: 0;
+        padding: 0;
+    }
+    .hljs-button {
+        padding: 0;
+        &::after {
+            height: 26px;
+            line-height: 26px;
+
+            font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
+        }
+    }
+    main div.blog-content-box pre.set-code-hide .hide-preCode-box {
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#606672));
+        background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #606672 100%);
+    }
+    .markdown_views code {
+        border-radius: var(--radius);
+    }
+    /* Image */
+    main div.blog-content-box article #content_views img {
+        border-radius: var(--radius);
+    }
+
+    /* Right sidebar */
+    aside div.aside-box h3.aside-title {
+        background-image: none;
+    }
+    .nodata .recommend-right_aside .groupfile {
+        border-radius: var(--radius);
+    }
+    .groupfile .pos-box .scroll-box .toc-box ol li {
+        margin-top: 2px;
+        & a {
+            padding: 5px 16px;
+            box-sizing: content-box;
+            width: auto;
+        }
+    }
+    @media only screen and (min-width: 1079px) {
+        .recommend-right {
+            display: block;
+        }
+    }
+    .nodata .recommend-right_aside :where(#groupfile,
+    .groupfile-div) {
+        max-height: calc(100vh - 4.1rem) !important;
+    }
+
+    /* Corner toolbar */
+    .csdn-side-toolbar {
+        left: initial !important;
+    }
+
+    /* === Dark mode adaption === */
+    @media (prefers-color-scheme: dark) {
+        body,
+        #csdn-toolbar {
+            background-image: none !important;
+            background-color: #3c3c3c !important;
+        }
+        #csdn-toolbar,
+        #csdn_tool_otherPlace {
+            color: #ccc;
+        }
+        main div.blog-content-box,
+        .recommend-box .recommend-item-box,
+        .csdn-side-toolbar a.option-box,
+        #copyright-box,
+        #csdn-toolbar .toolbar-search .toolbar-search-container input,
+        #csdn_tool_otherPlace .toolbar-search .toolbar-search-container input,
+        .comment-box.comment-box-new2,
+        aside div.aside-box {
+            background: rgba(255, 255, 255, 0.7) !important;
+        }
+        #csdn-toolbar .toolbar-search .toolbar-search-container .gradient,
+        #csdn_tool_otherPlace .toolbar-search .toolbar-search-container .gradient {
+            background: none;
+        }
+        #csdn_tool_otherPlace,
+        .more-toolbox-new .left-toolbox {
+            background: rgba(212, 212, 212, 1);
+        }
+        main div.blog-content-box .article-header-box .article-header div.article-info-box,
+        #blogColumnPayAdvert .column-group-item,
+        #blogHuaweiyunAdvert .column-group-item,
+        .groupfile .pos-box .scroll-box .toc-box > ol li.active {
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .recommend-box .recommend-item-box .desc-box .desc {
+            color: #686974;
+        }
+    }
+
+    /* Login Pop-up */
+    .passport-login-box,
+    .passport-login-box iframe {
+        height: 400px !important;
+    }
+}
+
+@-moz-document domain("passport.csdn.net") {
+    /* NAMESPACE: Passport */
+    /* Title */
+    .passport-container .passport-container-inner .passport-main .welcome_tips,
+    .login-box-title,
+
+    .login-box .login-box-top .login-box-tabs .login-box-tabs-items span.last-login-way {
+        display: none !important;
+    }
+
+    .passport-container .passport-container-inner .passport-main {
+        padding-top: 0;
+    }
+    .passport-container .passport-container-inner .passport-main,
+    .passport-container .passport-container-inner,
+    .passport-container-mini {
+        height: 400px !important;
+        min-height: 400px;
+    }
+}
