@@ -1,17 +1,22 @@
 /* ==UserStyle==
+* Basic
 @name               Pure CSDN
-@namespace          github.com/openstyles/stylus
+@namespace          https://github.com/cworld1
 @version            1.0.0
 @description        CSDN purification and optimization of reading experience
 @description:zh-CN  CSDN 净化 & 优化阅读体验
-@author             CWorld
+@author             CWorld (https://cworld0.com/)
+
+* Project
+@homepageURL        https://github.com/cworld1/pure-csdn
+@updateURL          https://github.com/cworld1/pure-csdn/blob/main/pure-csdn.user.css
+@license            GPL-3.0
+
+* Var
+@var    range   radius  "Radius"  [7, 0, 15, 1, "px"]
 ==/UserStyle== */
 @-moz-document domain("blog.csdn.net") {
     /* NAMESPACE: Blog */
-    :root {
-        --radius: 7px;
-    }
-
     /* === Remove useless elements === */
     /* Top app bar */
     /* Left-side */
@@ -62,9 +67,9 @@
     }
     #csdn-toolbar .toolbar-inside.exp3 .toolbar-container-middle .toolbar-search {
         max-width: 400px;
-    }
-    #csdn-toolbar .toolbar-inside.exp3 .toolbar-container-middle .toolbar-search .toolbar-search-container input::placeholder {
-        color: transparent;
+        & .toolbar-search-container input::placeholder {
+            color: transparent;
+        }
     }
     #csdn-toolbar .toolbar-search .toolbar-search-half > div.toolbar-search-history {
         width: inherit;
@@ -98,27 +103,37 @@
         background: transparent !important;
     }
     /* Article header box */
-    main div.blog-content-box .article-header-box .article-header div.article-info-box {
+    main div.blog-content-box .article-header-box .article-header > div.article-info-box {
         border-radius: var(--radius) var(--radius) 0 0;
         display: flex;
         padding: 5px 10px 2.5px;
         flex-wrap: wrap;
-    }
-    main div.blog-content-box .article-header-box .article-header div.article-info-box div.article-bar-top {
-        align-items: center;
-    }
-    main div.blog-content-box .article-header-box .article-header div.article-info-box div.article-bar-top .article-type-img {
-        width: 27px;
-        height: 24px;
-    }
-    main div.blog-content-box .article-header-box .article-header div.article-info-box :where(div.article-bar-top,
-    div.blog-tags-box) {
-        width: auto !important;
-    }
-    main div.blog-content-box .article-header-box .article-header div.article-info-box div.blog-tags-box .tags-box {
-        margin: 0;
-        display: flex;
-        align-items: center;
+        & div.article-bar-top {
+            align-items: center;
+        }
+        & div.article-bar-top .article-type-img {
+            width: 27px;
+            height: 24px;
+        }
+        & > div.blog-tags-box {
+            padding-left: 20px;
+            & :where(div.article-bar-top,
+            div.blog-tags-box) {
+                width: auto !important;
+            }
+            & > .tags-box {
+                margin: 0;
+                display: flex;
+                align-items: center;
+            }
+            & > .tags-box > :is(span.label:not(:last-of-type),
+            span.label:not(:last-of-type) + a) {
+                display: none;
+            }
+            & > .tags-box.artic-tag-box a.tag-link {
+                border-radius: var(--radius);
+            }
+        }
     }
     #blogColumnPayAdvert .column-group {
         padding: 0;
@@ -126,50 +141,40 @@
     #blogColumnPayAdvert .column-group-item {
         border-radius: 0 0 var(--radius) var(--radius);
         height: auto;
-    }
-    #blogColumnPayAdvert .column-group-item.column-group0 {
-        padding: 0 10px 5px 10px;
-    }
-    main div.blog-content-box .article-header-box .article-header div.article-info-box div.blog-tags-box {
-        padding-left: 20px;
-    }
-    main div.blog-content-box .article-header-box .article-header > div.article-info-box > div.blog-tags-box > .tags-box > :is(span.label:not(:last-of-type),
-    span.label:not(:last-of-type) + a) {
-        display: none;
-    }
-    #blogColumnPayAdvert .column-group-item .item-l {
-        width: auto;
-        flex-grow: 1;
-    }
-    #blogColumnPayAdvert .column-group-item .item-l img {
-        border-radius: 999px;
-        width: 26px;
-        height: 26px;
-        opacity: 0.6;
-    }
-    #blogColumnPayAdvert .column-group-item .item-l .title {
-        font-size: 14px;
-        line-height: 20px;
-    }
-    #blogColumnPayAdvert .column-group-item .item-l .title .dec {
-        display: none;
-    }
-    #blogColumnPayAdvert .column-group-item .item-m {
-        line-height: 20px;
-        display: flex;
-        align-items: center;
-        min-width: auto;
-    }
-    #blogColumnPayAdvert .column-group-item .item-r {
-        padding: 0;
-    }
-    #blogColumnPayAdvert .column-group-item .item-r a {
-        height: 24px;
-        line-height: 22px;
-        width: 68px;
-    }
-    main div.blog-content-box .article-header-box .article-header div.article-info-box div.blog-tags-box .tags-box.artic-tag-box a.tag-link {
-        border-radius: var(--radius);
+        &.column-group0 {
+            padding: 0 10px 5px 10px;
+        }
+        & .item-l {
+            width: auto;
+            flex-grow: 1;
+            & img {
+                border-radius: 999px;
+                width: 26px;
+                height: 26px;
+                opacity: 0.6;
+            }
+            & .title {
+                font-size: 14px;
+                line-height: 20px;
+            }
+            & .title .dec {
+                display: none;
+            }
+        }
+        & .item-m {
+            line-height: 20px;
+            display: flex;
+            align-items: center;
+            min-width: auto;
+        }
+        & .item-r {
+            padding: 0;
+            & a {
+                height: 24px;
+                line-height: 22px;
+                width: 68px;
+            }
+        }
     }
     /* Code */
     main div.blog-content-box pre .hljs-button.mddef {
@@ -203,25 +208,27 @@
     aside div.aside-box h3.aside-title {
         background-image: none;
     }
-    .nodata .recommend-right_aside .groupfile {
-        border-radius: var(--radius);
-    }
-    .groupfile .pos-box .scroll-box .toc-box ol li {
-        margin-top: 2px;
-        & a {
-            padding: 5px 16px;
-            box-sizing: content-box;
-            width: auto;
+    .nodata .recommend-right_aside {
+        & .groupfile {
+            border-radius: var(--radius);
+        }
+        & :where(#groupfile,
+        .groupfile-div) {
+            max-height: calc(100vh - 4.1rem) !important;
+        }
+        & .groupfile .pos-box .scroll-box .toc-box ol li {
+            margin-top: 2px;
+            & a {
+                padding: 5px 16px;
+                box-sizing: content-box;
+                width: auto;
+            }
         }
     }
     @media only screen and (min-width: 1079px) {
         .recommend-right {
             display: block;
         }
-    }
-    .nodata .recommend-right_aside :where(#groupfile,
-    .groupfile-div) {
-        max-height: calc(100vh - 4.1rem) !important;
     }
 
     /* Corner toolbar */
