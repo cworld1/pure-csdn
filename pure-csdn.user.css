@@ -16,11 +16,11 @@
 @var    range   radius  "Radius"  [7, 0, 15, 1, "px"]
 ==/UserStyle== */
 @-moz-document domain("blog.csdn.net") {
-    /* NAMESPACE: Blog */
-    /* === Remove useless elements === */
-    /* Top app bar */
-    /* Left-side */
-    #csdn-toolbar li:where([title="高价值源码课程分享"], [title="系统学习·问答·比赛"], [title="找到志同道合的伙伴"] +li, [title="会议"], [title="开源代码托管"]),
+  /* NAMESPACE: Blog */
+  /* === Remove useless elements === */
+  /* Top app bar */
+  /* Left-side */
+  #csdn-toolbar li:where([title="高价值源码课程分享"], [title="系统学习·问答·比赛"], [title="找到志同道合的伙伴"] +li, [title="会议"], [title="开源代码托管"]),
     /* Middle */
     :where(#csdn-toolbar, #csdn_tool_otherPlace) .toolbar-search .toolbar-search-container .icon-fire,
     #csdn-toolbar .toolbar-search .toolbar-search-half > div.toolbar-search-hot,
@@ -37,6 +37,7 @@
     #csdn-toolbar .toolbar-inside.exp3 .toolbar-btn-write.toolbar-btn-write-new,
     .icon-option-beta,
     :where(#csdn-toolbar, #csdn_tool_otherPlace) .toolbar-btns .toolbar-btn-msg #toolbar-remind i,
+    #sidecolumn-deepseek,
 
     /* Corner toolbar */
     .passport-login-tip-container,
@@ -52,254 +53,280 @@
     .recommend-box:where(.first-recommend-box, .second-recommend-box),
     .comment-operate-box .comment-operate-item.comment-reward,
     main div.blog-content-box pre .code-edithtml,
+    main div.blog-content-box .ai-abstract-box > .ai-abstract > p,
 
     /* Bottom app bar */
     .more-toolbox-new :where(.tool-item.tool-item-bar, .tool-QRcode),
     .more-toolbox-new .tool-active.is-collection .tool-active-list {
-        display: none !important;
-    }
+    display: none !important;
+  }
 
-    /* === Adjust elements === */
-    /* Top app bar */
-    #csdn-toolbar .toolbar-container,
-    #csdn_tool_otherPlace .toolbar-container {
-        min-width: inherit;
+  /* === Adjust elements === */
+  /* Top app bar */
+  #csdn-toolbar .toolbar-container,
+  #csdn_tool_otherPlace .toolbar-container {
+    min-width: inherit;
+  }
+  #csdn-toolbar .toolbar-inside.exp3 .toolbar-container-middle .toolbar-search {
+    max-width: 400px;
+    & .toolbar-search-container input::placeholder {
+      color: transparent;
     }
-    #csdn-toolbar .toolbar-inside.exp3 .toolbar-container-middle .toolbar-search {
-        max-width: 400px;
-        & .toolbar-search-container input::placeholder {
-            color: transparent;
-        }
-    }
-    #csdn-toolbar .toolbar-search .toolbar-search-half > div.toolbar-search-history {
-        width: inherit;
-    }
+  }
+  #csdn-toolbar
+    .toolbar-search
+    .toolbar-search-half
+    > div.toolbar-search-history {
+    width: inherit;
+  }
 
-    /* Main context */
-    body {
-        background: url("https://csdnimg.cn/release/blogv2/dist/pc/themesSkin/skin-city/images/bg.jpg?v20200831") repeat-x !important;
-        background-color: #f5f6f7 !important;
-        min-width: inherit;
+  /* Main context */
+  body {
+    background: url("https://csdnimg.cn/release/blogv2/dist/pc/themesSkin/skin-city/images/bg.jpg?v20200831")
+      repeat-x !important;
+    background-color: #f5f6f7 !important;
+    min-width: inherit;
+  }
+  .nodata .container {
+    display: flex;
+    justify-content: center;
+    width: inherit !important;
+  }
+  main {
+    float: inherit;
+  }
+  main div.blog-content-box {
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  main div.blog-content-box pre.set-code-show,
+  main div.blog-content-box pre.set-code-hide {
+    margin: 0;
+    padding: 0;
+    & > code {
+      border-radius: var(--radius);
     }
-    .nodata .container {
-        display: flex;
-        justify-content: center;
-        width: inherit !important;
+  }
+  main div.blog-content-box .article-header-box,
+  #blogColumnPayAdvert,
+  #blogHuaweiyunAdvert,
+  #csdn-copyright-footer.column {
+    background: transparent !important;
+  }
+  /* Article header box */
+  main
+    div.blog-content-box
+    .article-header-box
+    .article-header
+    > div.article-info-box {
+    border-radius: var(--radius);
+    display: flex;
+    padding: 2.5px 12px 10px;
+    flex-wrap: wrap;
+    & div.article-bar-top {
+      align-items: center;
     }
-    main {
-        float: inherit;
+    & div.article-bar-top .article-type-img {
+      width: 27px;
+      height: 24px;
     }
-    main div.blog-content-box {
-        border-radius: var(--radius) var(--radius) 0 0;
-    }
-    main div.blog-content-box pre.set-code-show,
-    main div.blog-content-box pre.set-code-hide {
-        border-radius: var(--radius);
-    }
-    main div.blog-content-box .article-header-box,
-    #blogColumnPayAdvert,
-    #blogHuaweiyunAdvert,
-    #csdn-copyright-footer.column {
-        background: transparent !important;
-    }
-    /* Article header box */
-    main div.blog-content-box .article-header-box .article-header > div.article-info-box {
-        border-radius: var(--radius) var(--radius) 0 0;
-        display: flex;
-        padding: 5px 10px 2.5px;
-        flex-wrap: wrap;
-        & div.article-bar-top {
-            align-items: center;
-        }
-        & div.article-bar-top .article-type-img {
-            width: 27px;
-            height: 24px;
-        }
-        & > div.blog-tags-box {
-            padding-left: 20px;
-            & :where(div.article-bar-top,
-            div.blog-tags-box) {
-                width: auto !important;
-            }
-            & > .tags-box {
-                margin: 0;
-                display: flex;
-                align-items: center;
-            }
-            & > .tags-box > :is(span.label:not(:last-of-type),
-            span.label:not(:last-of-type) + a) {
-                display: none;
-            }
-            & > .tags-box.artic-tag-box a.tag-link {
-                border-radius: var(--radius);
-            }
-        }
-    }
-    #blogColumnPayAdvert .column-group {
-        padding: 0;
-    }
-    #blogColumnPayAdvert .column-group-item {
-        border-radius: 0 0 var(--radius) var(--radius);
-        height: auto;
-        &.column-group0 {
-            padding: 0 10px 5px 10px;
-        }
-        & .item-l {
-            width: auto;
-            flex-grow: 1;
-            & img {
-                border-radius: 999px;
-                width: 26px;
-                height: 26px;
-                opacity: 0.6;
-            }
-            & .title {
-                font-size: 14px;
-                line-height: 20px;
-            }
-            & .title .dec {
-                display: none;
-            }
-        }
-        & .item-m {
-            line-height: 20px;
-            display: flex;
-            align-items: center;
-            min-width: auto;
-        }
-        & .item-r {
-            padding: 0;
-            & a {
-                height: 24px;
-                line-height: 22px;
-                width: 68px;
-            }
-        }
-    }
-    /* Code */
-    main div.blog-content-box pre .hljs-button.mddef {
-        top: 10px !important;
-        right: 10px !important;
+    & > div.blog-tags-box {
+      padding-left: 0;
+      & :where(div.article-bar-top, div.blog-tags-box) {
+        width: auto !important;
+      }
+      & > .tags-box {
         margin: 0;
-        padding: 0;
-    }
-    .hljs-button {
-        padding: 0;
-        &::after {
-            height: 26px;
-            line-height: 26px;
-
-            font-family: -apple-system, SF UI Text, Arial, PingFang SC, Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
-        }
-    }
-    main div.blog-content-box pre.set-code-hide .hide-preCode-box {
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#606672));
-        background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0) 0%, #606672 100%);
-    }
-    .markdown_views code {
+        display: flex;
+        align-items: center;
+      }
+      &
+        > .tags-box
+        > :is(
+          span.label:not(:last-of-type),
+          span.label:not(:last-of-type) + a
+        ) {
+        display: none;
+      }
+      & > .tags-box.artic-tag-box a.tag-link {
         border-radius: var(--radius);
+      }
     }
-    /* Image */
-    main div.blog-content-box article #content_views img {
-        border-radius: var(--radius);
+  }
+  /* Article header ai */
+  main div.blog-content-box .ai-abstract-box {
+    min-height: inherit;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    & > .ai-abstract {
+      border-radius: var(--radius);
+      padding: 5px 12px 7px;
+      & > .abstract-content {
+        margin-bottom: 0;
+      }
+      & > .abstract-content > .lock-img {
+        height: 18px;
+        opacity: 0.8;
+      }
     }
+  }
 
-    /* Right sidebar */
-    aside div.aside-box h3.aside-title {
-        background-image: none;
+  /* Link */
+  .htmledit_views a {
+    color: #3053cc;
+    text-decoration: underline;
+    &:visited {
+      color: purple;
     }
-    .nodata .recommend-right_aside {
-        & .groupfile {
-            border-radius: var(--radius);
-        }
-        & :where(#groupfile,
-        .groupfile-div) {
-            max-height: calc(100vh - 4.1rem) !important;
-        }
-        & .groupfile .pos-box .scroll-box .toc-box ol li {
-            margin-top: 2px;
-            & a {
-                padding: 5px 16px;
-                box-sizing: content-box;
-                width: auto;
-            }
-        }
-    }
-    @media only screen and (min-width: 1079px) {
-        .recommend-right {
-            display: block;
-        }
-    }
+  }
+  /* Code */
+  main div.blog-content-box pre .hljs-button.mddef {
+    top: 10px !important;
+    right: 10px !important;
+    margin: 0;
+    padding: 0;
+  }
+  .hljs-button {
+    padding: 0;
+    &::after {
+      height: 26px;
+      line-height: 26px;
 
-    /* Corner toolbar */
-    .csdn-side-toolbar {
-        left: initial !important;
+      font-family:
+        -apple-system,
+        SF UI Text,
+        Arial,
+        PingFang SC,
+        Hiragino Sans GB,
+        Microsoft YaHei,
+        WenQuanYi Micro Hei,
+        sans-serif;
     }
+  }
+  main div.blog-content-box pre.set-code-hide .hide-preCode-box {
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(255, 255, 255, 0)),
+      to(#606672)
+    );
+    background-image: linear-gradient(
+      -180deg,
+      rgba(255, 255, 255, 0) 0%,
+      #606672 100%
+    );
+  }
+  .markdown_views code {
+    border-radius: var(--radius);
+  }
+  /* Image */
+  main div.blog-content-box article #content_views img {
+    border-radius: var(--radius);
+  }
 
-    /* === Dark mode adaption === */
-    @media (prefers-color-scheme: dark) {
-        body,
-        #csdn-toolbar {
-            background-image: none !important;
-            background-color: #3c3c3c !important;
-        }
-        #csdn-toolbar,
-        #csdn_tool_otherPlace {
-            color: #ccc;
-        }
-        main div.blog-content-box,
-        .recommend-box .recommend-item-box,
-        .csdn-side-toolbar a.option-box,
-        #copyright-box,
-        #csdn-toolbar .toolbar-search .toolbar-search-container input,
-        #csdn_tool_otherPlace .toolbar-search .toolbar-search-container input,
-        .comment-box.comment-box-new2,
-        aside div.aside-box {
-            background: rgba(255, 255, 255, 0.7) !important;
-        }
-        #csdn-toolbar .toolbar-search .toolbar-search-container .gradient,
-        #csdn_tool_otherPlace .toolbar-search .toolbar-search-container .gradient {
-            background: none;
-        }
-        #csdn_tool_otherPlace,
-        .more-toolbox-new .left-toolbox {
-            background: rgba(212, 212, 212, 1);
-        }
-        main div.blog-content-box .article-header-box .article-header div.article-info-box,
-        #blogColumnPayAdvert .column-group-item,
-        #blogHuaweiyunAdvert .column-group-item,
-        .groupfile .pos-box .scroll-box .toc-box > ol li.active {
-            background: rgba(255, 255, 255, 0.7);
-        }
-        .recommend-box .recommend-item-box .desc-box .desc {
-            color: #686974;
-        }
+  /* Right sidebar */
+  aside div.aside-box h3.aside-title {
+    background: none;
+  }
+  .nodata .recommend-right_aside {
+    & .groupfile {
+      border-radius: var(--radius);
     }
+    & :where(#groupfile, .groupfile-div) {
+      max-height: calc(100vh - 4.1rem) !important;
+    }
+    & .groupfile .pos-box .scroll-box .toc-box ol li {
+      margin-top: 2px;
+      & a {
+        padding: 5px 16px;
+        box-sizing: content-box;
+        width: auto;
+      }
+    }
+  }
+  @media only screen and (min-width: 1079px) {
+    .recommend-right {
+      display: block;
+    }
+  }
 
-    /* Login Pop-up */
-    .passport-login-box,
-    .passport-login-box iframe {
-        height: 400px !important;
+  /* Corner toolbar */
+  .csdn-side-toolbar {
+    left: initial !important;
+  }
+
+  /* === Dark mode adaption === */
+  @media (prefers-color-scheme: dark) {
+    body,
+    #csdn-toolbar {
+      background-image: none !important;
+      background-color: #3c3c3c !important;
     }
+    #csdn-toolbar,
+    #csdn_tool_otherPlace {
+      color: #ccc;
+    }
+    main div.blog-content-box,
+    .recommend-box .recommend-item-box,
+    .csdn-side-toolbar a.option-box,
+    #copyright-box,
+    #csdn-toolbar .toolbar-search .toolbar-search-container input,
+    #csdn_tool_otherPlace .toolbar-search .toolbar-search-container input,
+    .comment-box.comment-box-new2,
+    aside div.aside-box,
+    main div.blog-content-box .ai-abstract-box .ai-abstract {
+      background: rgba(255, 255, 255, 0.7) !important;
+    }
+    #csdn-toolbar .toolbar-search .toolbar-search-container .gradient,
+    #csdn_tool_otherPlace .toolbar-search .toolbar-search-container .gradient {
+      background: none;
+    }
+    #csdn_tool_otherPlace,
+    .more-toolbox-new .left-toolbox {
+      background: rgba(212, 212, 212, 1);
+    }
+    main
+      div.blog-content-box
+      .article-header-box
+      .article-header
+      div.article-info-box,
+    #blogColumnPayAdvert .column-group-item,
+    #blogHuaweiyunAdvert .column-group-item,
+    .groupfile .pos-box .scroll-box .toc-box > ol li.active {
+      background: rgba(255, 255, 255, 0.7);
+    }
+    .recommend-box .recommend-item-box .desc-box .desc {
+      color: #686974;
+    }
+  }
+
+  /* Login Pop-up */
+  .passport-login-box,
+  .passport-login-box iframe {
+    height: 400px !important;
+  }
 }
 
 @-moz-document domain("passport.csdn.net") {
-    /* NAMESPACE: Passport */
-    /* Title */
-    .passport-container .passport-container-inner .passport-main .welcome_tips,
-    .login-box-title,
+  /* NAMESPACE: Passport */
+  /* Title */
+  .passport-container .passport-container-inner .passport-main .welcome_tips,
+  .login-box-title,
+  .login-box
+    .login-box-top
+    .login-box-tabs
+    .login-box-tabs-items
+    span.last-login-way {
+    display: none !important;
+  }
 
-    .login-box .login-box-top .login-box-tabs .login-box-tabs-items span.last-login-way {
-        display: none !important;
-    }
-
-    .passport-container .passport-container-inner .passport-main {
-        padding-top: 0;
-    }
-    .passport-container .passport-container-inner .passport-main,
-    .passport-container .passport-container-inner,
-    .passport-container-mini {
-        height: 400px !important;
-        min-height: 400px;
-    }
+  .passport-container .passport-container-inner .passport-main {
+    padding-top: 0;
+  }
+  .passport-container .passport-container-inner .passport-main,
+  .passport-container .passport-container-inner,
+  .passport-container-mini {
+    height: 400px !important;
+    min-height: 400px;
+  }
 }
