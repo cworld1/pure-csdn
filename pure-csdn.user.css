@@ -2,7 +2,7 @@
 * Basic
 @name               Pure CSDN
 @namespace          https://github.com/cworld1
-@version            1.1.0
+@version            1.2.0
 @description        CSDN purification and optimization of reading experience
 @description:zh-CN  CSDN 净化 & 优化阅读体验
 @author             CWorld (https://cworld0.com/)
@@ -43,6 +43,7 @@
 	.csdn-side-toolbar a:where([data-type="guide"], [data-type="cs"], [data-type="app"], [data-type="vip"], #sidecolumn-deepseek),
 	.csdn-side-toolbar .slide-details-cknows-box,
 	.runner-box.box3,
+	#mainBox > main > .article-aside-container > .sidebar > .sidebar-item:where(#tool-share, #sidebar-more, #sidebar-ai-guide),
 
 	/* Main content */
 	main div.blog-content-box .article-header-box .article-header div.article-info-box div.article-bar-top :where(#blog_detail_zk_collection, .read-count-box.is-like),
@@ -56,11 +57,38 @@
 	main div.blog-content-box .ai-abstract-box > .ai-abstract > p,
 	#dmp_ad_58,
 	.runner-box.box2,
+	#cknow-ai-box1,
+	#cknow-ai-box2,
 
 	/* Bottom app bar */
 	.more-toolbox-new :where(.tool-item.tool-item-bar, .tool-QRcode),
 	.more-toolbox-new .tool-active.is-collection .tool-active-list {
 		display: none !important;
+	}
+	body > div[data-v-app=""][style="position: relative;"] > div > div > div {
+		& > div:first-of-type,
+		& > div:last-of-type {
+			display: none;
+		}
+		& > div[z-index="2000"] > div {
+			max-width: 600px;
+			min-width: 400px;
+			float: right;
+			margin-bottom: 12px;
+			border-width: 1px !important;
+			& > div:first-of-type {
+				height: 0;
+				border: none !important;
+				& > div:first-of-type {
+					display: none;
+				}
+				& > div:last-of-type {
+					position: absolute;
+					right: 10px;
+					top: 7px;
+				}
+			}
+		}
 	}
 
 	/* === Adjust elements === */
@@ -102,6 +130,9 @@
 	}
 	main div.blog-content-box {
 		border-radius: var(--radius) var(--radius) 0 0;
+	}
+	body:has( #toolbarBox .toolbar-container > .toolbar-container-left > .toolbar-logo > .csdn-logo-ai) main div.blog-content-box {
+		background: none;
 	}
 	main div.blog-content-box .article-header-box,
 	#blogColumnPayAdvert,
@@ -247,6 +278,10 @@
 		body {
 			background-image: none !important;
 			background-color: #3c3c3c !important;
+			color: #abb2bf;
+		}
+		body:not(:has( #toolbarBox .toolbar-container > .toolbar-container-left > .toolbar-logo > .csdn-logo-ai)) main div.blog-content-box {
+			background: #242429 !important
 		}
 		/*  Toolbar */
 		#csdn-toolbar .toolbar-search .toolbar-search-container input,
@@ -276,11 +311,6 @@
 			& > span {
 				background: #545456 !important;
 			}
-
-			&:where(#tool-share,
-			#sidebar-more) {
-				display: none !important;
-			}
 		}
 
 		/* Main content */
@@ -309,8 +339,20 @@
 			border-color: #666;
 			color: #fff
 		}
-		body > div[data-v-app=""][style="position: relative;"] {
-			display: none;
+		body > div[data-v-app=""][style="position: relative;"] > div > div > div > div[z-index="2000"] > div {
+			border-color: #acacc9 !important;
+			& > div {
+				background: #3f3f43 !important;
+			}
+			& > div:first-of-type > div:last-of-type > div {
+				color: #abb2bf!important;
+			}
+			& > div:last-of-type > div:last-of-type > div > div:first-of-type button {
+				color: #abb2bf!important;
+			}
+			& > div:last-of-type textarea {
+				color: #fff !important;
+			}
 		}
 
 		/* Official */
@@ -1315,9 +1357,6 @@
 		main .place-onfile-box .place-onfile-item.active,
 		main .place-onfile-box .place-onfile-item:hover {
 			color: #fc5531 !important
-		}
-		main div.blog-content-box {
-			background: #242429 !important
 		}
 		main div.blog-content-box .creativecommons span,
 		main div.blog-content-box .creativecommons div {
