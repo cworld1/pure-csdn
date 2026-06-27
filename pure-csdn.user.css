@@ -2,7 +2,7 @@
 * Basic
 @name               Pure CSDN
 @namespace          https://github.com/cworld1
-@version            1.2.0
+@version            1.2.1
 @description        CSDN purification and optimization of reading experience
 @description:zh-CN  CSDN 净化 & 优化阅读体验
 @author             CWorld (https://cworld0.com/)
@@ -20,12 +20,12 @@
 	/* === Remove useless elements === */
 	/* Top app bar */
 	/* Left-side */
-	#csdn-toolbar li:where([title="高价值源码课程分享"], [title="系统学习·问答·比赛"], [title="找到志同道合的伙伴"] +li, [title="会议"], [title="开源代码托管"], [title="InsCode AI"]),
+	#csdn-toolbar li:where([title="高价值源码课程分享"], [title="系统学习·问答·比赛"], [title="找到志同道合的伙伴"] +li, [title="会议"], [title="开源代码托管"], [title="GPU算力"], [title="InsCode AI"], [title="模型市场"]),
 	/* Middle */
 	:where(#csdn-toolbar, #csdn_tool_otherPlace) .toolbar-search .toolbar-search-container :where(.icon-fire, #toolbar-c-box-button),
 	#csdn-toolbar .toolbar-search .toolbar-search-half > div.toolbar-search-hot,
 	/* Right side */
-	#csdn-toolbar .toolbar-inside.exp3 :where(.toolbar-btn-vip, .toolbar-btn-mp),
+	#csdn-toolbar .toolbar-inside.exp3 :where(.toolbar-btn-vip, .toolbar-btn-mp, .toolbar-btn-write.toolbar-btn-write-new),
 	#csdn-toolbar .profile-imag-box,
 
 	/* Left sidebar */
@@ -34,9 +34,9 @@
 	/* Right sidebar */
 	.sidetool-writeguide-box,
 	#rightAside :where(.programmer1Box, #recommendAdBox, #asideArchive, .aside-box.kind_person, .recommend-column-box, #article),
-	#csdn-toolbar .toolbar-inside.exp3 .toolbar-btn-write.toolbar-btn-write-new,
 	.icon-option-beta,
 	:where(#csdn-toolbar, #csdn_tool_otherPlace) .toolbar-btns .toolbar-btn-msg #toolbar-remind i,
+	#recommend-right > div.gitcode-qc-right-box.aside-box,
 
 	/* Corner toolbar */
 	.passport-login-tip-container,
@@ -287,6 +287,7 @@
 		#csdn-toolbar .toolbar-search .toolbar-search-container input,
 		#csdn_tool_otherPlace .toolbar-search .toolbar-search-container input {
 			background: #404041;
+			color: #fff;
 		}
 		#csdn-toolbar {
 			color: rgba(255, 255, 255, 0.8);
@@ -353,6 +354,10 @@
 			& > div:last-of-type textarea {
 				color: #fff !important;
 			}
+		}
+		/* Others */
+		.imgViewDom {
+			background-color: rgba(0, 0, 0, .66);
 		}
 
 		/* Official */
